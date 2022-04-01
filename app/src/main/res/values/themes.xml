@@ -1,0 +1,63 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.GarageNetwork" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryVariant">@color/primary</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/accent</item>
+        <item name="colorSecondaryVariant">@color/accent</item>
+        <item name="colorOnSecondary">@color/white</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
+    </style>
+
+    <style name="authLayout">
+        <item name="android:background">@drawable/auth_light</item>
+    </style>
+
+    <style name="editText">
+        <item name="android:background">@drawable/edit_text_layout</item>
+        <item name="android:width">300dp</item>
+        <item name="android:padding">10dp</item>
+        <item name="drawableTint">@color/secondary_text</item>
+        <item name="fontFamily">@font/acme</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textColorHint">@color/secondary_text</item>
+        <item name="android:drawablePadding">10dp</item>
+    </style>
+
+    <style name="buttonCorrection">
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="settingText">
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="grayChange">
+        <item name="android:textColor">@color/secondary_text</item>
+    </style>
+
+    <style name="settingBGLayout">
+        <item name="android:background">@drawable/setting_light</item>
+    </style>
+
+    <style name="settingLayout">
+        <item name="android:background">@drawable/linear_layout_bg</item>
+        <item name="android:backgroundTint">@color/white</item>
+        <item name="android:divider">@color/secondary_text</item>
+    </style>
+
+    <style name="settingIcon">
+        <item name="backgroundTint">#E8E6E6</item>
+        <item name="tint">@color/black</item>
+    </style>
+
+    <style name="profileIcon">
+        <item name="backgroundTint">@android:color/transparent</item>
+        <item name="tint">@color/black</item>
+    </style>
+</resources>

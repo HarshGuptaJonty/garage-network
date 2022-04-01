@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/authLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Authentication">
+
+    <TextView
+        android:id="@+id/authHeading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/amiko"
+        android:text="Login"
+        android:textColor="@color/white"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.10" />
+
+    <EditText
+        android:id="@+id/authEmail"
+        style="@style/editText"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/ic_baseline_person_outline_24"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/authHeading"
+        app:layout_constraintVertical_bias="0.06"
+        tools:ignore="TouchTargetSizeCheck" />
+
+    <EditText
+        android:id="@+id/authPassword"
+        style="@style/editText"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:drawableLeft="@drawable/ic_baseline_lock_24"
+        android:hint="Password"
+        android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/authEmail"
+        tools:ignore="TouchTargetSizeCheck" />
+
+    <Button
+        android:id="@+id/authButton"
+        style="@style/buttonCorrection"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/facebook"
+        android:onClick="authWithEmail"
+        android:padding="10dp"
+        android:text="Login"
+        android:textAllCaps="false"
+        app:cornerRadius="25dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/authPassword"
+        app:layout_constraintVertical_bias="0.117" />
+
+    <TextView
+        android:id="@+id/authForgotPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-medium"
+        android:onClick="forgotPassword"
+        android:text="Forgot your password?"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/authButton"
+        app:layout_constraintVertical_bias="0.045"
+        tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-medium"
+        android:text="or connect with"
+        android:textColor="@color/secondary_text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/authForgotPassword"
+        app:layout_constraintVertical_bias="0.4" />
+
+    <View
+        android:layout_width="100dp"
+        android:layout_height="0.7dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="7dp"
+        android:background="@color/secondary_text"
+        app:layout_constraintBottom_toBottomOf="@+id/textView2"
+        app:layout_constraintEnd_toStartOf="@+id/textView2" />
+
+    <View
+        android:layout_width="100dp"
+        android:layout_height="0.7dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginBottom="7dp"
+        android:background="@color/secondary_text"
+        app:layout_constraintBottom_toBottomOf="@+id/textView2"
+        app:layout_constraintStart_toEndOf="@+id/textView2" />
+
+    <Button
+        android:id="@+id/authPhoneButton"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/white"
+        android:drawableLeft="@drawable/ic_baseline_local_phone_24"
+        android:drawableTint="@color/black"
+        android:onClick="authWithPhone"
+        android:text="Phone"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        app:cornerRadius="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/authGoogleButton"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        app:layout_constraintVertical_bias="0.2" />
+
+    <Button
+        android:id="@+id/authGoogleButton"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/white"
+        android:drawableLeft="@drawable/ic_google"
+        android:onClick="authWithGoogle"
+        android:text="Google"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        app:cornerRadius="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/authPhoneButton"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        app:layout_constraintVertical_bias="0.2" />
+
+    <TextView
+        android:id="@+id/authMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-medium"
+        android:onClick="changeAuth"
+        android:text="Don't have account?"
+        android:textColor="@color/secondary_text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/authPhoneButton"
+        app:layout_constraintVertical_bias="0.3"
+        tools:ignore="TouchTargetSizeCheck" />
+
+    <TextView
+        android:id="@+id/authText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-medium"
+        android:onClick="changeAuth"
+        android:paddingLeft="10dp"
+        android:text="Sign up"
+        android:textColor="@color/facebook"
+        app:layout_constraintBottom_toBottomOf="@+id/authMessage"
+        app:layout_constraintStart_toEndOf="@+id/authMessage"
+        tools:ignore="TouchTargetSizeCheck" />
+
+    <ImageButton
+        android:id="@+id/passwordHideShow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:background="@android:color/transparent"
+        android:onClick="showHidePassword"
+        android:translationZ="2dp"
+        app:layout_constraintBottom_toBottomOf="@+id/authPassword"
+        app:layout_constraintEnd_toEndOf="@+id/authPassword"
+        app:layout_constraintTop_toTopOf="@+id/authPassword"
+        app:srcCompat="@drawable/ic_baseline_remove_red_eye_24"
+        app:tint="@color/secondary_text"
+        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

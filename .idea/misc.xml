@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Android_Studio/GarageNetwork/app/src/main/res/layout/activity_authentication.xml" value="0.278125" />
+        <entry key="..\:/Android_Studio/GarageNetwork/app/src/main/res/layout/activity_choose_person.xml" value="0.278125" />
+        <entry key="..\:/Android_Studio/GarageNetwork/app/src/main/res/layout/activity_main.xml" value="0.2640625" />
+        <entry key="..\:/Android_Studio/GarageNetwork/app/src/main/res/layout/activity_network_state.xml" value="0.278125" />
+        <entry key="..\:/Android_Studio/GarageNetwork/app/src/main/res/layout/activity_send_otp.xml" value="0.278125" />
+        <entry key="..\:/Android_Studio/GarageNetwork/app/src/main/res/layout/activity_set_pin.xml" value="0.278125" />
+        <entry key="..\:/Android_Studio/GarageNetwork/app/src/main/res/layout/activity_setting.xml" value="0.278125" />
+        <entry key="..\:/Android_Studio/GarageNetwork/app/src/main/res/layout/activity_verify_otp.xml" value="0.278125" />
+        <entry key="..\:/Android_Studio/GarageNetwork/app/src/main/res/layout/activity_verify_pin.xml" value="0.278125" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

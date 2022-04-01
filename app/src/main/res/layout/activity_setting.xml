@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/settingBGLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Setting">
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:fontFamily="@font/amiko"
+        android:text="Settings"
+        android:textColor="@color/white"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.05" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/accountProfileImage"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="30dp"
+        android:src="@drawable/person_icon"
+        app:civ_border_color="@android:color/transparent"
+        app:civ_border_width="2dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView5"
+        app:layout_constraintVertical_bias="0.03" />
+
+    <TextView
+        android:id="@+id/accountPersonName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginBottom="13dp"
+        android:fontFamily="@font/amiko"
+        android:maxWidth="250dp"
+        android:text="UserName"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/accountProfileImage"
+        app:layout_constraintStart_toEndOf="@+id/accountProfileImage" />
+
+    <ImageView
+        android:id="@+id/settingIconDeveloper"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:scaleX="1.2"
+        android:scaleY="1.2"
+        app:layout_constraintBottom_toBottomOf="@+id/textView5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.876"
+        app:layout_constraintStart_toEndOf="@+id/textView5"
+        app:srcCompat="@drawable/ic_outline_settings_24"
+        app:tint="@color/icons" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="27dp"
+        android:onClick="changeName"
+        android:scaleX="1.1"
+        android:scaleY="1.1"
+        app:layout_constraintBottom_toBottomOf="@+id/accountPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/ic_baseline_edit_24"
+        app:tint="@color/icons" />
+
+    <LinearLayout
+        style="@style/settingLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="20dp"
+        android:orientation="vertical"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:showDividers="middle|end"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/accountProfileImage">
+
+        <LinearLayout
+            android:id="@+id/storageLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageButton
+                style="@style/settingIcon"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginEnd="20dp"
+                android:layout_weight="0"
+                android:background="@drawable/edit_text_layout"
+                app:srcCompat="@drawable/ic_round_storage_24" />
+
+            <TextView
+                android:id="@+id/storageText"
+                style="@style/settingText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/allerta"
+                android:text="Storage size used: 0.0MB"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
+            android:gravity="center_vertical"
+            android:onClick="setPin"
+            android:orientation="horizontal"
+            android:visibility="visible">
+
+            <ImageButton
+                android:id="@+id/imageButton"
+                style="@style/settingIcon"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginEnd="20dp"
+                android:layout_weight="0"
+                android:background="@drawable/edit_text_layout"
+                android:onClick="setPin"
+                app:srcCompat="@drawable/ic_baseline_security_24" />
+
+            <TextView
+                android:id="@+id/pinStatus"
+                style="@style/settingText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/allerta"
+                android:onClick="setPin"
+                android:text="Change MPIN"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
+            android:layout_weight="0"
+            android:gravity="center_vertical"
+            android:onClick="trashBin"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/imageButton3"
+                style="@style/settingIcon"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginEnd="20dp"
+                android:layout_weight="0"
+                android:background="@drawable/edit_text_layout"
+                android:onClick="trashBin"
+                app:srcCompat="@drawable/ic_outline_delete_24" />
+
+            <TextView
+                android:id="@+id/textView9"
+                style="@style/settingText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/allerta"
+                android:onClick="trashBin"
+                android:text="Trash Bin"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/touchIdCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
+            android:layout_weight="0"
+            android:gravity="center_vertical"
+            android:onClick="fingerPrintToggle"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/imageButton6"
+                style="@style/settingIcon"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginEnd="20dp"
+                android:layout_weight="0"
+                android:background="@drawable/edit_text_layout"
+                android:onClick="fingerPrintToggle"
+                app:srcCompat="@drawable/ic_baseline_fingerprint_24" />
+
+            <TextView
+                android:id="@+id/fingerPrintStatus"
+                style="@style/settingText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/allerta"
+                android:onClick="fingerPrintToggle"
+                android:text="Enable touch ID"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
+            android:layout_weight="0"
+            android:gravity="center_vertical"
+            android:onClick="deleteAccount"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/imageButton4"
+                style="@style/settingIcon"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginEnd="20dp"
+                android:layout_weight="0"
+                android:background="@drawable/edit_text_layout"
+                android:onClick="deleteAccount"
+                app:srcCompat="@drawable/ic_baseline_remove_circle_outline_24"
+                app:tint="@android:color/holo_red_light" />
+
+            <TextView
+                android:id="@+id/textView10"
+                style="@style/settingText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/allerta"
+                android:onClick="deleteAccount"
+                android:text="Delete account"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
+            android:layout_weight="0"
+            android:gravity="center_vertical"
+            android:onClick="contactMe"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/imageButton5"
+                style="@style/settingIcon"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginEnd="20dp"
+                android:layout_weight="0"
+                android:background="@drawable/edit_text_layout"
+                android:onClick="contactMe"
+                app:srcCompat="@drawable/ic_baseline_person_pin_24" />
+
+            <TextView
+                android:id="@+id/textView11"
+                style="@style/settingText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/allerta"
+                android:onClick="contactMe"
+                android:text="Contact"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
+            android:gravity="center_vertical"
+            android:onClick="logout"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/imageButton2"
+                style="@style/settingIcon"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginEnd="20dp"
+                android:layout_weight="0"
+                android:background="@drawable/edit_text_layout"
+                android:onClick="logout"
+                app:srcCompat="@drawable/ic_baseline_power_settings_new_24"
+                app:tint="@android:color/holo_red_light" />
+
+            <TextView
+                android:id="@+id/textView8"
+                style="@style/settingText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/allerta"
+                android:onClick="logout"
+                android:text="Logout"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

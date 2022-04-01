@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "352985067499",
+    "firebase_url": "https://garagenetwork-97e4e-default-rtdb.firebaseio.com",
+    "project_id": "garagenetwork-97e4e",
+    "storage_bucket": "garagenetwork-97e4e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:352985067499:android:d6eaa60fab4615c03033ae",
+        "android_client_info": {
+          "package_name": "com.jonty.garagenetwork"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "352985067499-r1bm7ifltjtrdbg80qd75n0h0f73si5c.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.jonty.garagenetwork",
+            "certificate_hash": "593b8514ec72a763279da37e2560950b2b2cb2c9"
+          }
+        },
+        {
+          "client_id": "352985067499-hnd8fk4e038c5dq95pbrtnpfirb4beot.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBEGWn5R5QxlFyhthCjz8s5YcxU9Maa66g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "352985067499-hnd8fk4e038c5dq95pbrtnpfirb4beot.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

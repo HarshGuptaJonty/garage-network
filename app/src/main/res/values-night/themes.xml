@@ -1,0 +1,57 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.GarageNetwork" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/primary_dark</item>
+        <item name="colorPrimaryVariant">@color/primary_dark</item>
+        <item name="colorOnPrimary">@color/black</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/accent_dark</item>
+        <item name="colorSecondaryVariant">@color/accent_dark</item>
+        <item name="colorOnSecondary">@color/white</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
+        <item name="actionBarStyle">@style/actionBar</item>
+    </style>
+
+    <style name="actionBar" parent="Widget.MaterialComponents.ActionBar.Primary">
+        <item name="backgroundColor">@color/primary_dark</item>
+    </style>
+
+    <style name="authLayout">
+        <item name="android:background">@drawable/auth_dark</item>
+    </style>
+
+    <style name="buttonCorrection">
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="settingText">
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="grayChange">
+        <item name="android:textColor">@color/divider</item>
+    </style>
+
+    <style name="settingBGLayout">
+        <item name="android:background">@drawable/setting_dark</item>
+    </style>
+
+    <style name="settingLayout">
+        <item name="android:background">@drawable/linear_layout_bg</item>
+        <item name="android:backgroundTint">#242336</item>
+        <item name="android:divider">@color/white</item>
+    </style>
+
+    <style name="settingIcon">
+        <item name="backgroundTint">#242336</item>
+        <item name="tint">@color/icons</item>
+    </style>
+
+    <style name="profileIcon">
+        <item name="backgroundTint">@android:color/transparent</item>
+        <item name="tint">@color/white</item>
+    </style>
+</resources>
