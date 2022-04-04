@@ -60,4 +60,9 @@
         <item name="backgroundTint">@android:color/transparent</item>
         <item name="tint">@color/black</item>
     </style>
+
+    <style name="cardLayout">
+        <item name="android:background">@drawable/edit_text_layout</item>
+        <item name="android:backgroundTint">#DCDCDC</item>
+    </style>
 </resources>

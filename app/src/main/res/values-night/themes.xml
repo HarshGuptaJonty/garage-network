@@ -54,4 +54,9 @@
         <item name="backgroundTint">@android:color/transparent</item>
         <item name="tint">@color/white</item>
     </style>
+
+    <style name="cardLayout">
+        <item name="android:background">@drawable/edit_text_layout</item>
+        <item name="android:backgroundTint">#242336</item>
+    </style>
 </resources>

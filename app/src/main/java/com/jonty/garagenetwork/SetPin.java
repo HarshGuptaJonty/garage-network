@@ -196,8 +196,8 @@ public class SetPin extends AppCompatActivity {
             if (getIntent().hasExtra("ChangePin"))
                 intent = new Intent(this, Setting.class);
             else {
-                intent = new Intent(this, ChoosePerson.class);
-                intent.putExtra("Path", "Data");
+                intent = new Intent(this, MainScreen.class);
+                intent.putExtra("Path", "Buyer");
             }
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);

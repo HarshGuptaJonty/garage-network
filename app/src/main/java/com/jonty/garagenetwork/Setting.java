@@ -274,8 +274,8 @@ public class Setting extends AppCompatActivity {
     }
 
     public void trashBin(View view) {
-        Intent intent = new Intent(this, ChoosePerson.class);
-        intent.putExtra("Path", "Delete");
+        Intent intent = new Intent(this, MainScreen.class);
+        intent.putExtra("Path", "Owner");
         startActivity(intent);
     }
 

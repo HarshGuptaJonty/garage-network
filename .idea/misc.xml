@@ -3,15 +3,20 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Android_Studio/GarageNetwork/app/src/main/res/layout/activity_authentication.xml" value="0.278125" />
+        <entry key="..\:/Android_Studio/GarageNetwork/app/src/main/res/layout/activity_add_garage.xml" value="0.1804054054054054" />
+        <entry key="..\:/Android_Studio/GarageNetwork/app/src/main/res/layout/activity_authentication.xml" value="0.17859531772575252" />
         <entry key="..\:/Android_Studio/GarageNetwork/app/src/main/res/layout/activity_choose_person.xml" value="0.278125" />
+        <entry key="..\:/Android_Studio/GarageNetwork/app/src/main/res/layout/activity_garage_details.xml" value="0.33046875" />
         <entry key="..\:/Android_Studio/GarageNetwork/app/src/main/res/layout/activity_main.xml" value="0.2640625" />
+        <entry key="..\:/Android_Studio/GarageNetwork/app/src/main/res/layout/activity_main_screen.xml" value="0.16" />
         <entry key="..\:/Android_Studio/GarageNetwork/app/src/main/res/layout/activity_network_state.xml" value="0.278125" />
         <entry key="..\:/Android_Studio/GarageNetwork/app/src/main/res/layout/activity_send_otp.xml" value="0.278125" />
         <entry key="..\:/Android_Studio/GarageNetwork/app/src/main/res/layout/activity_set_pin.xml" value="0.278125" />
-        <entry key="..\:/Android_Studio/GarageNetwork/app/src/main/res/layout/activity_setting.xml" value="0.278125" />
+        <entry key="..\:/Android_Studio/GarageNetwork/app/src/main/res/layout/activity_setting.xml" value="0.1804054054054054" />
         <entry key="..\:/Android_Studio/GarageNetwork/app/src/main/res/layout/activity_verify_otp.xml" value="0.278125" />
         <entry key="..\:/Android_Studio/GarageNetwork/app/src/main/res/layout/activity_verify_pin.xml" value="0.278125" />
+        <entry key="..\:/Android_Studio/GarageNetwork/app/src/main/res/layout/card_data.xml" value="0.1804054054054054" />
+        <entry key="..\:/Android_Studio/GarageNetwork/app/src/main/res/layout/card_garage.xml" value="0.22" />
       </map>
     </option>
   </component>

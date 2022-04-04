@@ -208,8 +208,8 @@ public class VerifyPin extends AppCompatActivity {
                     super.onAuthenticationSucceeded(result);
                     View view = findViewById(android.R.id.content).getRootView();
                     inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
-                    Intent intent = new Intent(VerifyPin.this, ChoosePerson.class);
-                    intent.putExtra("Path", "Data");
+                    Intent intent = new Intent(VerifyPin.this, MainScreen.class);
+                    intent.putExtra("Path", "Buyer");
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);
                 }
@@ -290,8 +290,8 @@ public class VerifyPin extends AppCompatActivity {
             if (getIntent().hasExtra("ChangePin")) {
                 intent = new Intent(this, SetPin.class);
             } else {
-                intent = new Intent(this, ChoosePerson.class);
-                intent.putExtra("Path", "Data");
+                intent = new Intent(this, MainScreen.class);
+                intent.putExtra("Path", "Buyer");
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             }
             startActivity(intent);
