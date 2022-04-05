@@ -165,10 +165,4 @@ public class Seller implements Serializable {
     public void addPhone(long phoneNumber){
         this.phoneNumber.add(phoneNumber);
     }
-
-    public boolean search(String search){
-        if(name.contains(search) || country.contains(search) || state.contains(search) || district.contains(search) || address.contains(search))
-            return true;
-        return false;
-    }
 }

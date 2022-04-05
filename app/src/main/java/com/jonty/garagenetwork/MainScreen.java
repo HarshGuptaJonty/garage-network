@@ -6,6 +6,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,6 +27,8 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 import com.jonty.garagenetwork.Model.Seller;
 import com.jonty.garagenetwork.adapter.AdapterGarage;
 
@@ -42,6 +45,8 @@ public class MainScreen extends AppCompatActivity {
     private EditText searchGarageText;
     private InputMethodManager inputMethodManager;
     private FirebaseDatabase database;
+    private FirebaseStorage storage;
+    private StorageReference storageReference;
     private FirebaseAuth auth;
     private AdapterView.OnItemClickListener originalClick, searchClick;
     private Runnable runnable;
@@ -75,6 +80,8 @@ public class MainScreen extends AppCompatActivity {
 
         auth = FirebaseAuth.getInstance();
         database = FirebaseDatabase.getInstance();
+        storage = FirebaseStorage.getInstance();
+        storageReference = storage.getReference();
 
         if (!isNetworkConnected()) {
             Intent intent = new Intent(this, NetworkState.class);
@@ -86,6 +93,7 @@ public class MainScreen extends AppCompatActivity {
         sellers = new ArrayList<>();
         searchedSellers = new ArrayList<>();
         names = new ArrayList<>();
+
         handler = new Handler();
         runnable = new Runnable() {
             @Override
@@ -118,11 +126,6 @@ public class MainScreen extends AppCompatActivity {
             database.getReference().child("Seller").addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    if (!snapshot.exists()) {
-                        noResultFound1.setVisibility(View.VISIBLE);
-                        return;
-                    } else
-                        noResultFound1.setVisibility(View.INVISIBLE);
                     sellers.clear();
                     names.clear();
                     for (DataSnapshot seller : snapshot.getChildren()) {
@@ -133,8 +136,10 @@ public class MainScreen extends AppCompatActivity {
                         sellers.add(obj);
                         names.add(obj.getName());
                     }
-                    if(sellers.size()==0)
+                    if (sellers.size() == 0)
                         noResultFound1.setVisibility(View.VISIBLE);
+                    else
+                        noResultFound1.setVisibility(View.INVISIBLE);
                     AdapterGarage originalAdapter = new AdapterGarage(MainScreen.this, sellers, names);
                     garageList.setAdapter(originalAdapter);
                     garageList.setOnItemClickListener(originalClick);
@@ -149,11 +154,6 @@ public class MainScreen extends AppCompatActivity {
             database.getReference().child("Seller").addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    if (!snapshot.exists()) {
-                        noResultFound1.setVisibility(View.VISIBLE);
-                        return;
-                    } else
-                        noResultFound1.setVisibility(View.INVISIBLE);
                     sellers.clear();
                     names.clear();
                     for (DataSnapshot seller : snapshot.getChildren()) {
@@ -164,8 +164,10 @@ public class MainScreen extends AppCompatActivity {
                         sellers.add(obj);
                         names.add(obj.getName());
                     }
-                    if(sellers.size()==0)
+                    if (sellers.size() == 0)
                         noResultFound1.setVisibility(View.VISIBLE);
+                    else
+                        noResultFound1.setVisibility(View.INVISIBLE);
                     AdapterGarage originalAdapter = new AdapterGarage(MainScreen.this, sellers, names);
                     garageList.setAdapter(originalAdapter);
                     garageList.setOnItemClickListener(originalClick);
@@ -225,6 +227,7 @@ public class MainScreen extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
+        clearStorage();
         if (searchGarageText.getVisibility() != View.INVISIBLE)
             searchGarage(findViewById(android.R.id.content).getRootView());
         else if (path.compareTo("Buyer") == 0) {
@@ -260,19 +263,35 @@ public class MainScreen extends AppCompatActivity {
         final String searchText = searchGarageText.getText().toString().toLowerCase().trim();
         if (searchText.compareTo(lastSearch) != 0) {
             searchedSellers.clear();
-            for (Seller arr : sellers)
-                if (arr.search(searchText))
+            names.clear();
+            for (Seller arr : sellers) {
+                if (arr.getName().toLowerCase().contains(searchText) ||
+                        arr.getAddress().toLowerCase().contains(searchText) ||
+                        arr.getCountry().toLowerCase().contains(searchText) ||
+                        arr.getState().toLowerCase().contains(searchText) ||
+                        arr.getDistrict().toLowerCase().contains(searchText)) {
                     searchedSellers.add(arr);
-            if (searchedSellers.isEmpty())
-                noResultFound1.setVisibility(View.VISIBLE);
-            else
-                noResultFound1.setVisibility(View.INVISIBLE);
+                    names.add(arr.getName());
+                }
+            }
             searched = true;
             lastSearch = searchText;
+            if (searchedSellers.isEmpty()) {
+                noResultFound1.setVisibility(View.VISIBLE);
+                garageList.setVisibility(View.INVISIBLE);
+                return;
+            } else {
+                noResultFound1.setVisibility(View.INVISIBLE);
+                garageList.setVisibility(View.VISIBLE);
+            }
 
             AdapterGarage searchAdapter = new AdapterGarage(MainScreen.this, searchedSellers, names);
             garageList.setAdapter(searchAdapter);
             garageList.setOnItemClickListener(searchClick);
         }
+    }
+
+    private void clearStorage() {
+
     }
 }

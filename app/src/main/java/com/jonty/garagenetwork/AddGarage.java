@@ -118,6 +118,9 @@ public class AddGarage extends AppCompatActivity {
         } else if (uriList.isEmpty()) {
             Toast.makeText(this, "Please enter atleast one photo", Toast.LENGTH_SHORT).show();
             return;
+        } else if(imageLinks.isEmpty()){
+            Toast.makeText(this, "Please wait while we upload your images", Toast.LENGTH_SHORT).show();
+            return;
         }
 
         int type = 0;
@@ -128,9 +131,17 @@ public class AddGarage extends AppCompatActivity {
                 Integer.parseInt(priceStr), Integer.parseInt(heightStr), Integer.parseInt(widthStr), Long.parseLong(phoneOneStr),
                 type);
         if (!phoneTwoStr.isEmpty())
+            if(phoneTwoStr.length()<10){
+                Toast.makeText(this, "Invalid 2nd phone number", Toast.LENGTH_SHORT).show();
+                return;
+            } else
             obj.addPhone(Long.parseLong(phoneTwoStr));
         if (!phoneThreeStr.isEmpty())
+            if(phoneThreeStr.length()<10){
+                Toast.makeText(this, "Invalid 3rd phone number", Toast.LENGTH_SHORT).show();
+            } else
             obj.addPhone(Long.parseLong(phoneThreeStr));
+        obj.setDistrict(districtStr);
         obj.setAuthKey(auth.getUid());
         obj.setImageLinks(imageLinks);
         database.getReference().child("Seller").push().setValue(obj);
@@ -152,6 +163,10 @@ public class AddGarage extends AppCompatActivity {
     }
 
     public void previousImage(View view) {
+        if(uriList.size()==1){
+            Toast.makeText(this, "Only one image is added", Toast.LENGTH_SHORT).show();
+            return;
+        }
         if (uriList.size() == 0 || currentImage == -1) {
             Toast.makeText(this, "No more image to show", Toast.LENGTH_SHORT).show();
             return;
@@ -164,7 +179,11 @@ public class AddGarage extends AppCompatActivity {
     }
 
     public void nextImage(View view) {
-        if (uriList.size() == 0 || currentImage == -1) {
+        if(uriList.size()==1){
+            Toast.makeText(this, "Only one image is added", Toast.LENGTH_SHORT).show();
+            return;
+
+        }        if (uriList.size() == 0 || currentImage == -1) {
             Toast.makeText(this, "No more image to show", Toast.LENGTH_SHORT).show();
             return;
         }
