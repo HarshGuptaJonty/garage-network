@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -22,12 +23,14 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.ListResult;
 import com.google.firebase.storage.StorageReference;
 import com.jonty.garagenetwork.Model.Seller;
 import com.jonty.garagenetwork.adapter.AdapterGarage;
@@ -53,7 +56,7 @@ public class MainScreen extends AppCompatActivity {
     private Handler handler;
     private LinearLayout noResultFound1;
     private List<Seller> sellers, searchedSellers;
-    private List<String> names;
+    private List<String> names,storageList,databaseList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,6 +96,8 @@ public class MainScreen extends AppCompatActivity {
         sellers = new ArrayList<>();
         searchedSellers = new ArrayList<>();
         names = new ArrayList<>();
+        storageList = new ArrayList<>();
+        databaseList = new ArrayList<>();
 
         handler = new Handler();
         runnable = new Runnable() {
@@ -130,6 +135,8 @@ public class MainScreen extends AppCompatActivity {
                     names.clear();
                     for (DataSnapshot seller : snapshot.getChildren()) {
                         Seller obj = seller.getValue(Seller.class);
+                        for(String link:obj.getImageLinks())
+                            databaseList.add(link);
                         if (obj.getAuthKey().compareTo(auth.getUid()) != 0)
                             continue;
                         obj.setKey(seller.getKey());
@@ -158,6 +165,8 @@ public class MainScreen extends AppCompatActivity {
                     names.clear();
                     for (DataSnapshot seller : snapshot.getChildren()) {
                         Seller obj = seller.getValue(Seller.class);
+                        for(String link:obj.getImageLinks())
+                            databaseList.add(link);
                         if (obj.getAuthKey().compareTo(auth.getUid()) == 0)
                             continue;
                         obj.setKey(seller.getKey());
@@ -178,6 +187,18 @@ public class MainScreen extends AppCompatActivity {
 
                 }
             });
+        storageReference.listAll().addOnSuccessListener(new OnSuccessListener<ListResult>() {
+            @Override
+            public void onSuccess(ListResult listResult) {
+                for(StorageReference item: listResult.getItems())
+                    item.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                        @Override
+                        public void onSuccess(Uri uri) {
+                            storageList.add(uri.toString());
+                        }
+                    });
+            }
+        });
     }
 
     public void goToSetting(View view) {
@@ -197,6 +218,7 @@ public class MainScreen extends AppCompatActivity {
     }
 
     public void searchGarage(View view) {
+        clearStorage();
         if (searchGarageText.getVisibility() == View.INVISIBLE) {
             //activate search
             searchGarageIcon.setImageResource(R.drawable.ic_baseline_search_off_24);
@@ -292,6 +314,10 @@ public class MainScreen extends AppCompatActivity {
     }
 
     private void clearStorage() {
-
+        for(String link:storageList)
+            if(!databaseList.contains(link)){
+                Log.d("myapp","Deleted: "+link);
+                storage.getReferenceFromUrl(link).delete();
+            }
     }
 }
